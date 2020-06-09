@@ -54,7 +54,7 @@ $stat = Typecho_Widget::widget('Widget_Stat');
                     <?php if($posts->have()): ?>
                     <?php while($posts->next()): ?>
                         <li>
-                            <span><?php $posts->date('n.j'); ?></span>
+                            <span><?php $posts->date('Y-m-d'); ?></span>
                             <a href="<?php $posts->permalink(); ?>" class="title"><?php $posts->title(); ?></a>
                         </li>
                     <?php endwhile; ?>

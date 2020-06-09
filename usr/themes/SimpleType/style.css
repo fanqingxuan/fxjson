@@ -220,7 +220,7 @@ ol.page-navigator li a {
 }
 
 ol.page-navigator li.current a {
-	background: #3c9632;
+	background: #0360ff;
 	color: #fff;
 	cursor: default
 }
