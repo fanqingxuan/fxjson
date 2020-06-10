@@ -5,7 +5,6 @@ require_once 'config.inc.php';
 
 /** 载入数据库支持 */
 require_once 'Typecho/Db.php';
-
 /*****************************************************
  *													 *
  *													 *
@@ -41,46 +40,62 @@ $catDict = array_column($catlist,'name','mid');
 
 /**分类文章关系**/
 $sql = $db->select('mid','cid')
-			->from('table.relationships');
+			->from('table.relationships')
+			->order('mid',Typecho_Db::SORT_ASC);
 $tmprelationShip = $db->fetchAll($sql);
 $relationDict = array();
 foreach($tmprelationShip as $value) {
 	$relationDict[$value['mid']][] = $value['cid'];
 }
 
-/*****************************************************
- *													 *
- *													 *
- *			生成markdown,推送到github        		 *
- *													 *
- *													 *
- *****************************************************/
- 
+//生成markdown
 $markdown_dir = "markdown";
-mkdir($markdown_dir,755);
-mkdir($markdown_dir."/src",755);
-$readme_text = <<<EOF
+deldir($markdown_dir.'/');
+$summary_text = <<<EOF
 # 个人博客
 
 > 记录工作或者开发过程中遇到的各种问题，同时将碎片化知识进行整理记录，一来给有需要的朋友以帮助，二来作为笔记，避免重复入坑，降低效率。
 
 
 目录
+### [前言](README.md)
 
 EOF;
+//文章
 foreach($relationDict as $mid => $_list) {
-	$readme_text .= "* ".$catDict[$mid].PHP_EOL;
-	foreach($_list as $cid) {
-		if(!isset($articleDict[$cid])) continue;
-		print_r($articleDict[$cid]['text']);
-		$dest_file = "src/".$articleDict[$cid]['title'].".md";
-		$readme_text .= "\t* [".$articleDict[$cid]['title']."](".$dest_file.")".PHP_EOL;
-		file_put_contents($markdown_dir."/".$dest_file,$articleDict[$cid]['text']."");
-	}
-	
+    mkdir($markdown_dir.'/'.$catDict[$mid]);
+    $sub_summary_text = "### ".$catDict[$mid].PHP_EOL;
+    $summary_text .= "### [".$catDict[$mid]."](".$catDict[$mid]."/README.md)".PHP_EOL;;
+    foreach($_list as $cid) {
+        if(!isset($articleDict[$cid])) continue;
+        $title = strip_tags(htmlspecialchars_decode($articleDict[$cid]['title']));
+        $sub_summary_text .= "* [".$title."](".$title.".md)".PHP_EOL;
+        $url = "* [".$title."](".$catDict[$mid].'/'.$title.".md)".PHP_EOL;
+        $summary_text .= $url;
+        $dest_file = $markdown_dir.'/'.$catDict[$mid]."/".$title.".md";
+        $text = $articleDict[$cid]['text'];
+        if (0 === strpos($text, '<!--markdown-->')) {
+            $text = substr($text, 15);
+        }
+        file_put_contents($dest_file,"### ".$catDict[$mid]."\r\n".$text);
+    }
+    file_put_contents($markdown_dir."/".$catDict[$mid]."/README.md",$sub_summary_text);
 }
-file_put_contents($markdown_dir."/Readme.md",$readme_text);
-//deldir($markdown_dir.'/');
+//单页
+foreach($pageList as $page) {
+    $text = $page['text'];
+    if (0 === strpos($text, '<!--markdown-->')) {
+        $text = substr($text, 15);
+    }
+    mkdir($markdown_dir."/".$page['title']);
+    file_put_contents($markdown_dir."/".$page['title']."/README.md",$text);
+    $url = "### [".$page['title']."](".$page['title']."/README.md)".PHP_EOL;
+    $summary_text .= $url;
+}
+file_put_contents($markdown_dir."/SUMMARY.md",$summary_text);
+
+echo "successful done";
+
 
 function deldir($path){
    //如果是目录则继续
@@ -97,11 +112,11 @@ function deldir($path){
 					//目录清空后删除空文件夹
 					@rmdir($path.$val.'/');
 				}else{
-				  //如果是文件直接删除
-				  unlink($path.$val);
+					//如果是文件直接删除
+                    unlink($path.$val);
 				}
 			}
 		}
-		@rmdir($path);
 	}
+
 }
