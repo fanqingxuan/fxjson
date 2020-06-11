@@ -316,9 +316,14 @@ class EditorMD_Plugin implements Typecho_Plugin_Interface
         $options = Helper::options();
         $pluginUrl = $options->pluginUrl.'/EditorMD';
         $editormd = Typecho_Widget::widget('Widget_Options')->plugin('EditorMD');
+?>
+<link rel="stylesheet" href="<?php echo $pluginUrl; ?>/css/editormd.css" />
+
+<?php
         if($editormd->emoji){
 ?>
 <link rel="stylesheet" href="<?php echo $pluginUrl; ?>/css/emojify.min.css" />
+
 <?php }if($editormd->emoji || ($editormd->isActive == 1 && $conent->isMarkdown)){ ?>
 <script type="text/javascript">
     window.jQuery || document.write(unescape('%3Cscript%20type%3D%22text/javascript%22%20src%3D%22<?php echo $pluginUrl; ?>/lib/jquery.min.js%22%3E%3C/script%3E'));
