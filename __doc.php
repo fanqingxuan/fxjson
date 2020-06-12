@@ -93,7 +93,7 @@ foreach($pageList as $page) {
 }
 file_put_contents($markdown_dir."/SUMMARY.md",$summary_text);
 
-echo "successful done";
+echo "generate markdown successful".PHP_EOL;
 
 
 function deldir($path){
