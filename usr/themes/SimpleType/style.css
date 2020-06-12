@@ -235,6 +235,9 @@ ol.page-navigator a:hover {
 	font-size: 15px;
 	line-height: 28px
 }
+.post .editormd-html-preview {
+	width:auto !important;
+}
 
 .post header {
 	padding: 5px 0
