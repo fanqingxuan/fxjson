@@ -49,7 +49,7 @@ foreach($tmprelationShip as $value) {
 }
 
 //生成markdown
-$markdown_dir = "markdown";
+$markdown_dir = realpath(__DIR__.'/..')."/markdown";
 deldir($markdown_dir.'/');
 $summary_text = <<<EOF
 # 个人博客
@@ -94,11 +94,18 @@ foreach($pageList as $page) {
 file_put_contents($markdown_dir."/SUMMARY.md",$summary_text);
 
 //git推送
-passthru("git pull");
-passthru("git add .");
-passthru("git commit -m '更新博客内容'");
-passthru("git push");
-
+$output = shell_exec("git pull");
+echo implode("<br/>",explode("\r\n",$output));
+echo "git pull finish<br/>";
+$output = shell_exec("git add .");
+echo implode("<br/>",explode("\r\n",$output));
+echo "git add finish<br/>";
+$output = shell_exec("git commit -m '更新博客内容'");
+echo implode("<br/>",explode("\r\n",$output));
+echo "git commit finish<br/>";
+$output = shell_exec("git push");
+echo implode("<br/>",explode("\r\n",$output));
+echo "git push finish<br/>";
 echo "successful done";
 
 
