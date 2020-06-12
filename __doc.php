@@ -93,20 +93,6 @@ foreach($pageList as $page) {
 }
 file_put_contents($markdown_dir."/SUMMARY.md",$summary_text);
 
-echo 
-//git推送
-$output = shell_exec("cd {$markdown_dir} && git pull");
-echo implode("<br/>",explode("\r\n",$output));
-echo "git pull finish<br/>";
-$output = shell_exec("cd {$markdown_dir} && git add .");
-echo implode("<br/>",explode("\r\n",$output));
-echo "git add finish<br/>";
-$output = shell_exec("cd {$markdown_dir} && git commit -m '更新博客内容'");
-echo implode("<br/>",explode("\r\n",$output));
-echo "git commit finish<br/>";
-$output = shell_exec("cd {$markdown_dir} && git push");
-echo implode("<br/>",explode("\r\n",$output));
-echo "git push finish<br/>";
 echo "successful done";
 
 
