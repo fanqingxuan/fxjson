@@ -47,19 +47,6 @@ function get_post_view($archive) {
 }
 
 
-/**
- * 分类文章数量控制 
- */
-function themeInit($archive) { 
-    if ($archive->is('index')) {
-		if(isMobile()){
-			$archive->parameter->pageSize = 11; // 自定义条数 
-		}else{
-			$archive->parameter->pageSize = 13; // 自定义条数 
-		}
-        
-    }
-}
 
 /**
 * 格式化时间
