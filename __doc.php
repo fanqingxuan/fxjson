@@ -58,7 +58,6 @@ $summary_text = <<<EOF
 
 
 目录
-### [前言](README.md)
 
 EOF;
 //文章
@@ -94,6 +93,12 @@ foreach($pageList as $page) {
 }
 file_put_contents($markdown_dir."/SUMMARY.md",$summary_text);
 
+//git推送
+passthru("git pull");
+passthru("git add .");
+passthru("git commit -m '更新博客内容'");
+passthru("git push");
+
 echo "successful done";
 
 
@@ -104,7 +109,7 @@ function deldir($path){
 		$p = scandir($path);
 		foreach($p as $val){
 			//排除目录中的.和..
-			if($val !="." && $val !=".."){
+			if($val !="." && $val !=".." && $val!='.git'){
 				//如果是目录则递归子目录，继续操作
 				if(is_dir($path.$val)){
 					//子目录中操作删除文件夹和文件
