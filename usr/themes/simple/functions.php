@@ -7,7 +7,7 @@ function themeConfig($form) {
     $subtitle = new Typecho_Widget_Helper_Form_Element_Text('subtitle', NULL, NULL, _t('网站副标题'), _t('将显示在首页标题和首页Logo下'));
     $form->addInput($subtitle);
 	
-	$links = new Typecho_Widget_Helper_Form_Element_Textarea('links', NULL, '<a href="https://www.moidea.info" target="_blank">多思多金</a>', _t('友情链接'), _t('网页底部友情链接，直接填写代码即可'));
+	$links = new Typecho_Widget_Helper_Form_Element_Textarea('links', NULL, '', _t('友情链接'), _t('网页底部友情链接，直接填写代码即可'));
     $form->addInput($links);
 	
 	$beian = new Typecho_Widget_Helper_Form_Element_Text('beian', NULL, NULL, _t('网站备案号'), _t('网页底部的备案号'));
