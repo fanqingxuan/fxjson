@@ -168,3 +168,15 @@ function isMobile()
     } 
     return false;
 } 
+
+/**
+ * 分类文章数量控制 
+ */
+function themeInit($archive) { 
+    if ($archive->is('index')) {
+		if(isMobile()){
+			$archive->parameter->pageSize = 14; // 自定义条数 
+		}
+        
+    }
+}
