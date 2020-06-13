@@ -111,10 +111,6 @@ header span {
 	font-family: Microsoft Jhenghei
 }
 
-header span:before {
-	content: "#"
-}
-
 main .box {
 	padding: 10px 15px 0;
 	overflow: hidden
