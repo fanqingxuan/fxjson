@@ -3,7 +3,7 @@
 <section class="list">
 	<?php while($this->next()): ?>
 	<article>
-		[<?php $this->category(','); ?>] <a class="title" href="<?php $this->permalink() ?>"><?php $this->title() ?></a>   <span class="meta"><?php $this->date('Y-m-d H:i:s'); ?> </span>
+		[<?php $this->category(','); ?>] <a class="title <?php if($this->is_recommend):?>recommend<?php endif;?>" href="<?php $this->permalink() ?>"><?php $this->title() ?></a>   <span class="meta"><?php $this->date('Y-m-d H:i:s'); ?> </span>
 	</article>
 	<?php endwhile; ?>
 	

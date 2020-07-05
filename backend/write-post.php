@@ -88,7 +88,12 @@ Typecho_Widget::widget('Widget_Contents_Post_Edit')->to($post);
                                 <?php endwhile; ?>
                             </ul>
                         </section>
-
+                        <section class="typecho-post-option allow-option">
+                            <ul>
+                             <li><input id="is_recommend" name="is_recommend" type="checkbox" value="1" <?php if($post->is_recommend): ?>checked="true"<?php endif; ?> />
+                             <label for="is_recommend"><?php _e('是否推荐'); ?></label></li>
+                            </ul>
+                        </section>
                         <section class="typecho-post-option">
                             <label for="token-input-tags" class="typecho-label"><?php _e('标签'); ?></label>
                             <p><input id="tags" name="tags" type="text" value="<?php $post->tags(',', false); ?>" class="w-100 text" /></p>

@@ -1,0 +1,1 @@
+ALTER TABLE tbl_contents ADD is_recommend tinyint(1) NOT NULL DEFAULT 0 COMMENT '是否推荐文章';
