@@ -257,7 +257,7 @@ class Widget_Abstract_Contents extends Widget_Abstract
         return $this->db->select('table.contents.cid', 'table.contents.title', 'table.contents.slug', 'table.contents.created', 'table.contents.authorId',
         'table.contents.modified', 'table.contents.type', 'table.contents.status', 'table.contents.text', 'table.contents.commentsNum', 'table.contents.order',
         'table.contents.template', 'table.contents.password', 'table.contents.allowComment', 'table.contents.allowPing', 'table.contents.allowFeed',
-        'table.contents.parent')->from('table.contents');
+        'table.contents.parent','table.contents.is_recommend')->from('table.contents');
     }
 
     /**
@@ -285,6 +285,7 @@ class Widget_Abstract_Contents extends Widget_Abstract
             'allowComment'  =>  !empty($content['allowComment']) && 1 == $content['allowComment'] ? 1 : 0,
             'allowPing'     =>  !empty($content['allowPing']) && 1 == $content['allowPing'] ? 1 : 0,
             'allowFeed'     =>  !empty($content['allowFeed']) && 1 == $content['allowFeed'] ? 1 : 0,
+            'is_recommend'  =>  !empty($content['is_recommend']) && 1 == $content['is_recommend'] ? 1 : 0,
             'parent'        =>  empty($content['parent']) ? 0 : intval($content['parent'])
         );
 
@@ -330,6 +331,7 @@ class Widget_Abstract_Contents extends Widget_Abstract
             'allowComment'  =>  !empty($content['allowComment']) && 1 == $content['allowComment'] ? 1 : 0,
             'allowPing'     =>  !empty($content['allowPing']) && 1 == $content['allowPing'] ? 1 : 0,
             'allowFeed'     =>  !empty($content['allowFeed']) && 1 == $content['allowFeed'] ? 1 : 0,
+            'is_recommend'  =>  !empty($content['is_recommend']) && 1 == $content['is_recommend'] ? 1 : 0,
             'parent'        =>  empty($content['parent']) ? 0 : intval($content['parent'])
         );
 

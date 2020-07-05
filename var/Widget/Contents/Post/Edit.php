@@ -716,7 +716,7 @@ class Widget_Contents_Post_Edit extends Widget_Abstract_Contents implements Widg
     public function writePost()
     {
         $contents = $this->request->from('password', 'allowComment',
-            'allowPing', 'allowFeed', 'slug', 'tags', 'text', 'visibility');
+            'allowPing', 'allowFeed', 'slug', 'tags', 'text', 'visibility','is_recommend');
 
         $contents['category'] = $this->request->getArray('category');
         $contents['title'] = $this->request->get('title', _t('未命名文档'));

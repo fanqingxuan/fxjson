@@ -180,6 +180,9 @@ footer .ftlinks a:before {
     color: #0366d6;
 	border-bottom: 1px dotted #6b6b6b
 }
+.list article .recommend {
+    color:red;
+}
 
 .list article .meta {
 	font-size: 12px;
