@@ -110,6 +110,8 @@ main header h1 {
 header span {
 	font-family: Microsoft Jhenghei
 }
+.site-search {margin-top:10px;}
+.site-search input {padding:3px;padding-left:18px;width:250px;outline:0;border:none;border-bottom:1px solid #999;border-radius:0;background:url(data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAB20lEQVRIDdVUPUsDQRC9r4DNFaJN/oA2ggiCnQS832AnWAZSBtIoeAHTBFIGYirB7n7DCZJOEMRSG+3SaHVdkrv43rEXwt3spYgpXBh2982bmds3u2fO53Njk8PaZHLm/v8FnDKJBoPBkWVZLXBOYbuwb9goSZJuvV5/xXrlMKUmt9ttp1qtXiGaVhGyTIF1wjC8DYIgFvwLSOyBSu6DRX83juPj2WzmcuZe4b7neddYl47CCZQsz4iyIIUHKZ7yGcCpQboQOCjJSZlchRMozSlLT0rOYgrvYVlRfMLiKBQAiw01IEcgRihwyZ/ydVypAG+Lgea/64KIR1H0ofwpX8eVCvAqGqZp7uuCiLuuu6f8KV/HlQqMSLZt+1wXlPOnfB23UICPCGTe8yZvixSo8CZk5C26kzgZVrimdAyHwxtMPoyPqMeGsieUTZ2sCdyGsVdveCNnjUbjh/v8KJyAhPF43MHkwxJYC0lfHMeJOHOPpPzH08deHcL32O/3d7jPD/EEGUk9OvFfBM4Bkt/D0o/UnaS0QFZIN+MDLlYVESXSJczjeNEP+PJLWCbXNmR0l3lrFWCirAiWn5PJpIb9F/HFYL/+wnzf35LyrNWDxVeWLNaWqCR36tp4gV/GSRHBU2pHMwAAAABJRU5ErkJggg==) no-repeat -4px -2px;}
 
 main .box {
 	padding: 10px 15px 0;

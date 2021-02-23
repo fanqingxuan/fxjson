@@ -44,5 +44,10 @@
                     <a<?php if($this->is('page', $pages->slug)): ?> class="current"<?php endif; ?> href="<?php $pages->permalink(); ?>" title="<?php $pages->title(); ?>"><?php $pages->title(); ?></a>
                 <?php endwhile; ?>
             </nav>
+            <div class="site-search">
+                <form class="site-search-form" id="search" method="post" action="" role="search">
+                    <input id="st-search-input" type="text" name="s" class="text" placeholder="<?php _e('输入关键字搜索'); ?>" />
+                </form>
+            </div>
        </div>
 		
