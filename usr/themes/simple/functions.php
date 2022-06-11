@@ -175,7 +175,7 @@ function isMobile()
 function themeInit($archive) { 
     if ($archive->is('index') || $archive->is('archive')) {
 		if(isMobile()){
-			$archive->parameter->pageSize = 14; // 自定义条数 
+			$archive->parameter->pageSize = 16; // 自定义条数 
 		}
         
     }

@@ -35,7 +35,7 @@ $adminFile = basename($params['path']);
 if (!$user->logged && !Typecho_Cookie::get('__typecho_first_run') && !empty($currentMenu)) {
     
     if ('welcome.php' != $adminFile) {
-        $response->redirect(Typecho_Common::url('welcome.php', $options->adminUrl));
+        $response->redirect(Typecho_Common::url('index.php', $options->adminUrl));
     } else {
         Typecho_Cookie::set('__typecho_first_run', 1);
     }

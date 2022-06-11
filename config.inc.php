@@ -56,9 +56,9 @@ $db = new Typecho_Db('Pdo_Mysql', 'tbl_');
 $db->addServer(array (
   'host' => 'localhost',
   'user' => 'root',
-  'password' => 'root',
+  'password' => 'root@pwd123',
   'charset' => 'utf8',
   'port' => '3306',
-  'database' => 'typecho',
+  'database' => 'jsonblog',
 ), Typecho_Db::READ | Typecho_Db::WRITE);
 Typecho_Db::set($db);
